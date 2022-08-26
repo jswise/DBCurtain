@@ -1,0 +1,18 @@
+variables:
+  system.prefergitfrompath: 'true'
+
+name: $(BuildID)
+
+pool:
+  name: TerraconWorkpool
+  demands: Cmd
+
+steps:
+- task: BatchScript@1
+  displayName: 'Run script batch\build.bat'
+  inputs:
+    filename: 'batch\build.bat'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: DBCurtain
